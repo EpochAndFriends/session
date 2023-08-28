@@ -37,7 +37,6 @@ const registerValidator = [
         .matches(/[IVXLCDM]+/i).withMessage('La contraseña debe incluir números romanos')
         .matches(/(😀|😎|🥰)/).withMessage('La contraseña debe incluir uno de los emojis 😀, 😎 o 🥰')
         .matches(/\b(29|30|31)\b/).withMessage('La contraseña debe incluir un día del mes (29, 30 o 31)')
-        .matches(/^[^E]*E?[^E]*E?[^E]*E?[^E]*$/).withMessage('La contraseña no debe tener más de 3 letras "E"')
         .matches(/(🔥|🌞|🌙)/).withMessage('La contraseña debe incluir uno de los emojis 🔥, 🌞 o 🌙')
         .matches(/\b(202[0-9]|2020)\b/).withMessage('La contraseña debe incluir el año 2020 o un año entre 20200 y 20299')
         .bail(),

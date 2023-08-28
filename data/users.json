@@ -19,5 +19,19 @@
         "age": "2",
         "color": "red",
         "password": "$2b$10$RTfApsZ.u6U2K8F.dywnN.T7Ud5FgBH4TZyA2vjsEZQ6/HWaFYbHC"
+    },
+    {
+        "username": "maximiliano",
+        "email": "maximilianobrocato@gmail.com",
+        "age": "24",
+        "color": "red",
+        "password": "$2b$10$bRUkoVRt6zpGXCI2.kcF3uHM.RlZgIQG4/WHFu7r4xYOLXvcd9sC2"
+    },
+    {
+        "username": "maximiliano",
+        "email": "maximilianobrocato@gmail.com",
+        "age": "23",
+        "color": "pink",
+        "password": "$2b$10$RvJkvulHQm8hfII.T0saSudiQGmwMI/38DHmAgcaDRifJ3pM4iugK"
     }
 ]

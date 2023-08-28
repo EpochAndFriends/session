@@ -32,10 +32,20 @@
         <div class="mb-3">
             <label for="color" class="form-label">Selecciona un color:</label>
             <select class="form-select" id="color" name="color" required>
-                <option value="red">Rojo</option>
-                <option value="blue">Azul</option>
-                <option value="green">Verde</option>
+                <option value="red" <%= color === 'red' ? 'selected' : '' %>>Rojo</option>
+                <option value="blue" <%= color === 'blue' ? 'selected' : '' %>>Azul</option>
+                <option value="green" <%= color === 'green' ? 'selected' : '' %>>Verde</option>
+                <option value="yellow" <%= color === 'yellow' ? 'selected' : '' %>>Amarillo</option>
+                <option value="purple" <%= color === 'purple' ? 'selected' : '' %>>Morado</option>
+                <option value="orange" <%= color === 'orange' ? 'selected' : '' %>>Naranja</option>
+                <option value="pink" <%= color === 'pink' ? 'selected' : '' %>>Rosa</option>
+                <option value="brown" <%= color === 'brown' ? 'selected' : '' %>>Marrón</option>
+                <option value="gray" <%= color === 'gray' ? 'selected' : '' %>>Gris</option>
+                <option value="black" <%= color === 'black' ? 'selected' : '' %>>Negro</option>
+                <option value="white" <%= color === 'white' ? 'selected' : '' %>>Blanco</option>
             </select>
+            
+            
         </div>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="rememberColor" name="rememberColor">

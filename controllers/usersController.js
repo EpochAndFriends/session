@@ -12,10 +12,13 @@ const usersController = {
         // ...
     },
     showRegisterForm: (req, res) => {
+        const errors = validationResult(req);
+    
         res.render('register', {
             title: 'Registrarse',
             old: req.body,
-            errors: errors.mapped()   
+            color: req.body.color,
+            errors: errors.mapped()
         });
     },
     
@@ -28,6 +31,7 @@ const usersController = {
             return res.render('register', {
                 title: 'Registrarse',
                 errors: errors.mapped(),
+                color: req.body.color,
                 old: { ...req.body, password: req.body.password },
             });
         }

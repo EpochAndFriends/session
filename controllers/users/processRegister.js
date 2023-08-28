@@ -1,22 +1,58 @@
+const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
-const User = require('../../data/Users');
 const fs = require('fs');
-const { writeJSON } = require('../../data');
+const path = require('path');
 
-module.exports = (req, res) => {
-    let errors = validationResult(req);
-    if (errors.isEmpty()) {
-        const users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
-        let newUser = User(req.body);
+const processRegister = async (req, res) => {
+    const errors = validationResult(req);
 
-        users.push(newUser);
-
-        fs.writeFileSync('path/to/users.json', JSON.stringify(users, null, 4), 'utf8');
-        return res.redirect('/');
-    } else {
+    console.log('Errors:', errors.array());
+    if (!errors.isEmpty()) {
         return res.render('register', {
-            old: req.body,
-            errors: errors.mapped()
+            title: 'Registrarse',
+            errors: errors.mapped(),
+            old: { ...req.body, password: req.body.password },
         });
     }
+
+    const { username, email, age, color, rememberColor, password } = req.body;
+
+    if (rememberColor) {
+        res.cookie('selectedColor', color, { maxAge: 7 * 24 * 60 * 60 * 1000 }); // Cookie expira en 7 días
+    } else {
+        res.clearCookie('selectedColor');
+    }
+
+    // Hash the password before storing it
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    res.locals.bodyColor = color;
+
+    // Agregar la lógica para guardar el nuevo usuario en users.json
+    const usersFilePath = path.join(__dirname, '../data/users.json'); 
+    const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'));
+    const newUser = {
+        username,
+        email,
+        age,
+        color,
+        password: hashedPassword // Store the hashed password
+    };
+    users.push(newUser);
+
+    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 4), 'utf8');
+
+    res.render('register_success', {
+        title: 'Registro Exitoso',
+        username,
+        email,
+        age,
+        color,
+        userData: {
+            username,
+            color
+        }
+    });
 };
+
+module.exports = processRegister;
