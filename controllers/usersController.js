@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const usersController = {
     showLoginForm: (req, res) => {
         res.render('login', { title: 'Iniciar Sesión' });
@@ -10,8 +11,26 @@ const usersController = {
         res.render('register', { title: 'Registrarse' });
     },
     processRegisterForm: (req, res) => {
-        // Lógica para procesar el formulario de registro
-        // ...
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.render('register', {
+                title: 'Registrarse',
+                errors: errors.array()
+            });
+        }
+    
+        const { username, email, age, color } = req.body;
+    
+        // Aplica el color de fondo seleccionado al body
+        res.locals.bodyColor = color;
+    
+        // Redirige a la nueva vista que mostrará el mensaje
+        res.render('register_success', {
+            title: 'Registro Exitoso',
+            username,
+            email,
+            age
+        });
     }
 };
 

@@ -1,0 +1,11 @@
+# Node.js / npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Dependencias generadas por los diferentes sistemas operativos
+*.swp
+.DS_Store
+Thumbs.db
