@@ -14,17 +14,19 @@ const usersController = {
         res.render('register', {
             title: 'Registrarse',
             old: req.body,
-            errors: {}    
+            errors: errors.mapped()   
         });
     },
     
     
     processRegisterForm: (req, res) => {
         const errors = validationResult(req);
+
+        console.log('Errors:', errors.array());
         if (!errors.isEmpty()) {
             return res.render('register', {
                 title: 'Registrarse',
-                errors: errors.array(),
+                errors: errors.mapped(),
                 old: req.body 
             });
         }

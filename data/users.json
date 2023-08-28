@@ -4,5 +4,11 @@
         "email": "maximilianobrocato@gmail.com",
         "age": "23",
         "color": "blue"
+    },
+    {
+        "username": "maximiliano",
+        "email": "maximilianobrocato@gmail.com",
+        "age": "2",
+        "color": "red"
     }
 ]
