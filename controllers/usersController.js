@@ -11,14 +11,21 @@ const usersController = {
         // ...
     },
     showRegisterForm: (req, res) => {
-        res.render('register', { title: 'Registrarse' });
+        res.render('register', {
+            title: 'Registrarse',
+            old: req.body,
+            errors: {}    
+        });
     },
+    
+    
     processRegisterForm: (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.render('register', {
                 title: 'Registrarse',
-                errors: errors.array()
+                errors: errors.array(),
+                old: req.body 
             });
         }
 

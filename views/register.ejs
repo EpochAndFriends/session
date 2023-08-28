@@ -7,19 +7,23 @@
     <form action="/users/register" method="post">
         <div class="mb-3">
             <label for="username" class="form-label">Nombre de usuario:</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+            <input type="text" class="form-control" id="username" name="username" required value="<%= old.username || '' %>">
+            <small class="text-danger"><%= errors.username ? errors.username.msg : '' %></small>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña:</label>
             <input type="password" class="form-control" id="password" name="password" required>
+            <small class="text-danger"><%= errors.password ? errors.password.msg : '' %></small>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Correo electrónico:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" required value="<%= old.email || '' %>">
+            <small class="text-danger"><%= errors.email ? errors.email.msg : '' %></small>
         </div>
         <div class="mb-3">
             <label for="age" class="form-label">Edad:</label>
-            <input type="number" class="form-control" id="age" name="age">
+            <input type="number" class="form-control" id="age" name="age" value="<%= old.age || '' %>">
+            <small class="text-danger"><%= errors.age ? errors.age.msg : '' %></small>
         </div>
         <div class="mb-3">
             <label for="color" class="form-label">Selecciona un color:</label>
