@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
@@ -19,7 +20,7 @@ const usersController = {
     },
     
     
-    processRegisterForm: (req, res) => {
+    processRegisterForm: async (req, res) => {
         const errors = validationResult(req);
 
         console.log('Errors:', errors.array());
@@ -31,13 +32,16 @@ const usersController = {
             });
         }
 
-        const { username, email, age, color, rememberColor } = req.body;
+        const { username, email, age, color, rememberColor, password } = req.body;
 
         if (rememberColor) {
             res.cookie('selectedColor', color, { maxAge: 7 * 24 * 60 * 60 * 1000 }); // Cookie expira en 7 días
         } else {
             res.clearCookie('selectedColor');
         }
+
+        // Hash the password before storing it
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         res.locals.bodyColor = color;
 
@@ -48,7 +52,8 @@ const usersController = {
             username,
             email,
             age,
-            color
+            color,
+            password: hashedPassword // Store the hashed password
         };
         users.push(newUser);
 
