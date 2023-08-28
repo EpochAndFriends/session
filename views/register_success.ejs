@@ -2,9 +2,9 @@
 
 <%- include('partials/header.ejs') %>
 
-<main class="container mt-5" style="background-color: <%= bodyColor || '' %>">
+<main class="container mt-5" style="background-color: <%= userData.color || '' %>">
     <h2>¡Registro Exitoso!</h2>
-    <p><%= username %>, gracias por visitarnos.</p>
+    <p><%= userData.username %>, gracias por visitarnos.</p>
 </main>
 
 <%- include('partials/footer.ejs') %>

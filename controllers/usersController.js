@@ -49,7 +49,12 @@ const usersController = {
             title: 'Registro Exitoso',
             username,
             email,
-            age
+            age,
+            color,
+            userData: {
+                username,
+                color
+            }
         });
     }
 };
