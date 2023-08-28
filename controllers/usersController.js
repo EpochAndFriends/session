@@ -28,7 +28,7 @@ const usersController = {
             return res.render('register', {
                 title: 'Registrarse',
                 errors: errors.mapped(),
-                old: req.body 
+                old: { ...req.body, password: req.body.password },
             });
         }
 

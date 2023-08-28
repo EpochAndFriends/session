@@ -1,3 +1,23 @@
 [
-
+    {
+        "username": "maximiliano",
+        "email": "maximilianobrocato@gmail.com",
+        "age": "2",
+        "color": "red",
+        "password": "$2b$10$JX6xZLjenWVMs5Q.uCsCOuIxyYQ8jYED4jL11QEjeFxheXaDdBoOe"
+    },
+    {
+        "username": "maximiliano",
+        "email": "maximilianobrocato@gmail.com",
+        "age": "2",
+        "color": "red",
+        "password": "$2b$10$VxbO/T.FoHgpe2qotPya6uF7u/4pMjJXD6PVed099vTJGfjnSOTNG"
+    },
+    {
+        "username": "Maximiliano",
+        "email": "maximilianobrocato@gmail.com",
+        "age": "2",
+        "color": "red",
+        "password": "$2b$10$RTfApsZ.u6U2K8F.dywnN.T7Ud5FgBH4TZyA2vjsEZQ6/HWaFYbHC"
+    }
 ]
