@@ -36,7 +36,6 @@ const usersController = {
             age
         });
     }
-    
 };
 
 module.exports = usersController;
