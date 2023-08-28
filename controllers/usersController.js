@@ -19,12 +19,16 @@ const usersController = {
             });
         }
     
-        const { username, email, age, color } = req.body;
+        const { username, email, age, color, rememberColor } = req.body;
     
-        // Aplica el color de fondo seleccionado al body
+        if (rememberColor) {
+            res.cookie('selectedColor', color, { maxAge: 7 * 24 * 60 * 60 * 1000 }); // Cookie expira en 7 días
+        } else {
+            res.clearCookie('selectedColor');
+        }
+    
         res.locals.bodyColor = color;
     
-        // Redirige a la nueva vista que mostrará el mensaje
         res.render('register_success', {
             title: 'Registro Exitoso',
             username,
@@ -32,6 +36,7 @@ const usersController = {
             age
         });
     }
+    
 };
 
 module.exports = usersController;

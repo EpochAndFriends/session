@@ -29,8 +29,21 @@
                 <option value="green">Verde</option>
             </select>
         </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberColor" name="rememberColor">
+            <label class="form-check-label" for="rememberColor">Recordar color</label>
+        </div>
         <button type="submit" class="btn btn-primary">Registrarse</button>
+        <button type="button" class="btn btn-secondary" id="forgetColor">Olvidar el color</button>
     </form>
 </main>
+
+<script>
+    const forgetColorButton = document.getElementById('forgetColor');
+    forgetColorButton.addEventListener('click', () => {
+        document.cookie = 'selectedColor=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        window.location.reload();
+    });
+</script>
 
 <%- include('partials/footer.ejs') %>
